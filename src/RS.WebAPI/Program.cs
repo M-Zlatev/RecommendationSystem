@@ -1,5 +1,4 @@
-using RS.Application;
-using RS.Infrastructure;
+using RS.Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,9 +6,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services
-    .AddApplication()
-    .AddInfrastructure();
+builder.Services.AddPresentation();
 
 var app = builder.Build();
 

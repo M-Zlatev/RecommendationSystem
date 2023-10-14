@@ -12,12 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\RS.Application\RS.Application.csproj" />
-    <ProjectReference Include="..\RS.Infrastructure\RS.Infrastructure.csproj" />
+    <ProjectReference Include="..\RS.Presentation\RS.Presentation.csproj" />
   </ItemGroup>
 
 </Project>
