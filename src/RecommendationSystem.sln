@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RS.WebAPI", "RS.WebAPI\RS.WebAPI.csproj", "{EB6E85B4-9818-4776-AD27-9140C6C67FBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RS.WebAPI", "RS.WebAPI\RS.WebAPI.csproj", "{EB6E85B4-9818-4776-AD27-9140C6C67FBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RS.Domain", "RS.Domain\RS.Domain.csproj", "{2F284A8E-7446-4EB4-A6F7-5E05F2BEB9A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RS.Domain", "RS.Domain\RS.Domain.csproj", "{2F284A8E-7446-4EB4-A6F7-5E05F2BEB9A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RS.Application", "RS.Application\RS.Application.csproj", "{85D519FE-2BB1-495D-A261-B92A327CA233}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RS.Application", "RS.Application\RS.Application.csproj", "{85D519FE-2BB1-495D-A261-B92A327CA233}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RS.Infrastructure", "RS.Infrastructure\RS.Infrastructure.csproj", "{30232071-D467-49B4-A645-EA97E44E7B8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RS.Infrastructure", "RS.Infrastructure\RS.Infrastructure.csproj", "{30232071-D467-49B4-A645-EA97E44E7B8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RS.Presentation", "RS.Presentation\RS.Presentation.csproj", "{4B8EC883-DB3E-4587-86D9-574F95C6C787}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{30232071-D467-49B4-A645-EA97E44E7B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30232071-D467-49B4-A645-EA97E44E7B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30232071-D467-49B4-A645-EA97E44E7B8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B8EC883-DB3E-4587-86D9-574F95C6C787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B8EC883-DB3E-4587-86D9-574F95C6C787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B8EC883-DB3E-4587-86D9-574F95C6C787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B8EC883-DB3E-4587-86D9-574F95C6C787}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
