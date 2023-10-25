@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RS.Domain.Apartament">
+    <Position X="0.75" Y="0.5" Width="1.75" />
+    <AssociationLine Name="Floor" Type="RS.Domain.Floor" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.312" Y="2.757" />
+        <Point X="2.312" Y="3.132" />
+        <Point X="4.193" Y="3.132" />
+        <Point X="4.193" Y="3.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAgBAAAAwAAAAkAAAICBAAAAAAAAAAAAAACAAAQACA=</HashCode>
+      <FileName>Apartament\Apartament.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ApartmentStatus" />
+      <Property Name="PropertyType" />
+      <Property Name="Location" />
+      <Property Name="ConstructionType" />
+      <Property Name="Floor" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RS.Domain.Location">
+    <Position X="1" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIIAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Apartament\Location.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="City" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RS.Domain.City">
+    <Position X="1" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Apartament\City.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RS.Domain.Floor">
+    <Position X="3.5" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Apartament\Floor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="RS.Domain.Enums.ApartmentStatus">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Apartament\Enums\ApartmentStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RS.Domain.Enums.PropertyType">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAQAAAQAAAIMAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Apartament\Enums\PropertyType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RS.Domain.Enums.ConstructionType">
+    <Position X="10.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAEAAAABAAACAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Apartament\Enums\ConstructionType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
