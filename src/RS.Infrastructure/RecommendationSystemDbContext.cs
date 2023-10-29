@@ -1,10 +1,12 @@
 ﻿namespace RS.Infrastructure;
 
 #region Usings
+using System.Reflection;
+
 using Microsoft.EntityFrameworkCore;
 
 using Domain;
-using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 #endregion
 
 public class RecommendationSystemDbContext : DbContext
@@ -27,14 +29,9 @@ public class RecommendationSystemDbContext : DbContext
         base.OnConfiguring(optionsBuilder);
     }
 
-    public class RecommendationSystemDbContextFactory : IDesignTimeDbContextFactory<RecommendationSystemDbContext>
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        public RecommendationSystemDbContext CreateDbContext(string[] args)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<RecommendationSystemDbContext>();
-            optionsBuilder.UseSqlServer(@"Server=.;Database=RecommendationSystem;Trusted_Connection=True;TrustServerCertificate=true;MultipleActiveResultSets=true");
-
-            return new RecommendationSystemDbContext(optionsBuilder.Options);
-        }
+        // Applies configurations from RS.Infrastructure.Configurations via reflection.
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }

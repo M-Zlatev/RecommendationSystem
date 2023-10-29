@@ -4,28 +4,32 @@
     <Position X="0.75" Y="0.5" Width="1.75" />
     <AssociationLine Name="Floor" Type="RS.Domain.Floor" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="2.312" Y="2.757" />
-        <Point X="2.312" Y="3.132" />
-        <Point X="4.193" Y="3.132" />
-        <Point X="4.193" Y="3.75" />
+        <Point X="2.312" Y="2.95" />
+        <Point X="2.312" Y="2.986" />
+        <Point X="4.094" Y="2.986" />
+        <Point X="4.094" Y="3.75" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAgBAAAAwAAAAkAAAICBAAAAAAAAAAAAAACAAAQACA=</HashCode>
+      <HashCode>AAAiBAAAAwAAAAkAAAICBAAAAAAAAAAAAAACAAAQACA=</HashCode>
       <FileName>Apartament\Apartament.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="ApartmentStatus" />
       <Property Name="PropertyType" />
-      <Property Name="Location" />
-      <Property Name="ConstructionType" />
       <Property Name="Floor" />
+      <Property Name="ConstructionType" />
+      <Property Name="Location" />
     </ShowAsAssociation>
   </Class>
   <Class Name="RS.Domain.Location">
     <Position X="1" Y="3.75" Width="1.5" />
+    <Members>
+      <Property Name="Apartament" Hidden="true" />
+      <Property Name="ApartamentId" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAIIAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAADAAAAAAAAAAAIIAAAAAAAAAAAAAAgAAAAAAAAABA=</HashCode>
       <FileName>Apartament\Location.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -34,15 +38,23 @@
   </Class>
   <Class Name="RS.Domain.City">
     <Position X="1" Y="5.75" Width="1.5" />
+    <Members>
+      <Property Name="Location" Hidden="true" />
+      <Property Name="LocationId" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAKAAAAAAAAAAAAAAIAAAQAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Apartament\City.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RS.Domain.Floor">
     <Position X="3.5" Y="3.75" Width="1.75" />
+    <Members>
+      <Property Name="Apartament" Hidden="true" />
+      <Property Name="ApartamentId" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIADAAAAAAAAAAAABAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
       <FileName>Apartament\Floor.cs</FileName>
     </TypeIdentifier>
   </Class>

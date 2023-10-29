@@ -4,6 +4,8 @@ using Enums;
 
 public class Apartament
 {
+    public long Id { get; set; }
+
     public ApartmentStatus ApartmentStatus { get; set; }
 
     public PropertyType PropertyType { get; set; }
