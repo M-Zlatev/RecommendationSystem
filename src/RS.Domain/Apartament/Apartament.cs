@@ -1,18 +1,19 @@
 ﻿namespace RS.Domain;
 
 using Enums;
+using ValueObjects;
 
 public class Apartament
 {
-    public long Id { get; set; }
+    public ApartamentId Id { get; set; }
 
     public ApartmentStatus ApartmentStatus { get; set; }
 
     public PropertyType PropertyType { get; set; }
 
-    public decimal Price { get; set; }
+    public Money Price { get; set; }
 
-    public double PricePerSqM { get; set; }
+    public Money PricePerSqM { get; set; }
 
     public int Quadrature { get; set; }
 

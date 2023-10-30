@@ -4,18 +4,23 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using Domain;
+using Domain.ValueObjects;
 
 public class FloorConfiguration : IEntityTypeConfiguration<Floor>
 {
-    public void Configure(EntityTypeBuilder<Floor> modelBuilder)
+    public void Configure(EntityTypeBuilder<Floor> floor)
     {
-        modelBuilder.HasKey(f => f.Id);
+        floor.HasKey(f => f.Id);
 
-        modelBuilder
+        floor.Property(c => c.Id).HasConversion(
+            floorId => floorId.Value,
+            value => new FloorId(value));
+
+        floor
             .Property(f => f.ApartmentFloor)
             .IsRequired();
 
-        modelBuilder
+        floor
             .Property(f => f.TotalFloorsInBuilding)
             .IsRequired();
     }

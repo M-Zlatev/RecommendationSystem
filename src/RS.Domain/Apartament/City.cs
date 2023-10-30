@@ -1,11 +1,13 @@
 ﻿namespace RS.Domain;
 
+using ValueObjects;
+
 public class City
 {
-    public long Id { get; set; }
+    public CityId Id { get; set; }
 
     #region Required one-to-one relationship
-    public long LocationId { get; set; } // Required foreign key property
+    public LocationId LocationId { get; set; } // Required foreign key property
     public Location Location { get; set; } // Required reference navigation to principal
     #endregion
 
