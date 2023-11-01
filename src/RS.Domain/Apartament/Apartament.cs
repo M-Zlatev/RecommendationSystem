@@ -5,6 +5,14 @@ using ValueObjects;
 
 public class Apartament
 {
+    public Apartament(ApartamentId id, ApartmentStatus apartmentStatus, PropertyType propertyType, Money price)
+    {
+        Id = id;
+        ApartmentStatus = apartmentStatus;
+        PropertyType = propertyType;
+        Price = price;
+    }
+
     public ApartamentId Id { get; set; }
 
     public ApartmentStatus ApartmentStatus { get; set; }
