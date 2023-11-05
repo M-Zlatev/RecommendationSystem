@@ -2,6 +2,8 @@
 
 using Microsoft.EntityFrameworkCore;
 
+using Domain.Core;
+
 /// <summary>
 /// Represents the application database context interface.
 /// </summary>
@@ -56,5 +58,4 @@ public interface IApplicationDbContext
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The number of rows affected.</returns>
     Task<int> ExecuteSqlAsync(string sql, IEnumerable<SqlParameter> parameters, CancellationToken cancellationToken = default);
-}
 }
