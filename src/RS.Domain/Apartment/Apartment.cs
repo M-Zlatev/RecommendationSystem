@@ -1,9 +1,10 @@
 ﻿namespace RS.Domain;
 
+using Core;
 using Enums;
 using ValueObjects;
 
-public class Apartment
+public class Apartment : Entity
 {
     public Apartment(
          ApartmentId id,

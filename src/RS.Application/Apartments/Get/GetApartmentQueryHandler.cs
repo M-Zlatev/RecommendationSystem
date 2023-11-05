@@ -1,37 +1,43 @@
 ﻿namespace RS.Application.Apartments.Get;
 
+using System.Linq;
+
 using MediatR;
 
 using Data;
-using RS.Domain.Enums;
-using RS.Domain;
+using Domain;
 
 public sealed class GetApartmentQueryHandler : IRequestHandler<GetApartmentQuery, ApartmentResponse>
 {
     private readonly IApplicationDbContext _context;
-    public Task<ApartmentResponse> Handle(GetApartmentQuery request, CancellationToken cancellationToken)
+
+    public GetApartmentQueryHandler(IApplicationDbContext context)
     {
-        var apartment = await _context
+        _context = context;
+    }
+
+    public async Task<ApartmentResponse> Handle(GetApartmentQuery request, CancellationToken cancellationToken)
+    {
+        var apartment = _context
             .Apartments
             .Where(a => a.Id == request.ApartmentId)
             .Select(a => new ApartmentResponse(
                 a.Id.Value,
-                Guid id,
-                ApartmentStatus ApartmentStatus,
-                PropertyType PropertyType,
-                string PriceCurrency,
-                decimal PriceAmount,
-                string PricePerSqMCurrency,
-                decimal PricePerSqMAmount,
-                int Quadrature,
-                Floor Floor,
-                ConstructionType ConstructionType,
-                int YearOfConstruction,
-                Location Location,
-                bool BrokerCommission,
-                bool PermissionForUse,
-                string Notes))
-            .FirstOrDefault(cancellationToken);
+                a.ApartmentStatus,
+                a.PropertyType,
+                a.Price.Currency,
+                a.Price.Amount,
+                a.PricePerSqM.Currency,
+                a.PricePerSqM.Amount,
+                a.Quadrature,
+                a.Floor,
+                a.ConstructionType,
+                a.YearOfConstruction,
+                a.Location,
+                a.BrokerCommission,
+                a.PermissionForUse,
+                a.Notes))
+            .FirstOrDefault();
 
         if(apartment is null)
         {

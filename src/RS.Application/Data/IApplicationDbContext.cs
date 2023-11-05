@@ -1,8 +1,11 @@
 ﻿namespace RS.Application.Data;
 
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 using Domain.Core;
+using Domain.Core.Utilities;
+using RS.Domain;
 
 /// <summary>
 /// Represents the application database context interface.
@@ -23,7 +26,7 @@ public interface IApplicationDbContext
     /// <typeparam name="TEntity">The entity type.</typeparam>
     /// <param name="id">The entity identifier.</param>
     /// <returns>The <typeparamref name="TEntity"/> with the specified identifier if it exists, otherwise null.</returns>
-    Task<Maybe<TEntity>> GetBydIdAsync<TEntity>(Guid id)
+    Task<NullableValueWrapper<TEntity>> GetBydIdAsync<TEntity>(Guid id)
         where TEntity : Entity;
 
     /// <summary>
@@ -58,4 +61,6 @@ public interface IApplicationDbContext
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The number of rows affected.</returns>
     Task<int> ExecuteSqlAsync(string sql, IEnumerable<SqlParameter> parameters, CancellationToken cancellationToken = default);
+
+    public DbSet<Apartment> Apartments { get; set; }
 }

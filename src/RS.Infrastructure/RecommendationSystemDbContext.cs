@@ -1,22 +1,29 @@
 ﻿namespace RS.Infrastructure;
 
 #region Usings
+using System;
+using System.Collections.Generic;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
+using Application.Data;
 using Domain;
-using Microsoft.Extensions.Configuration;
+using Domain.Core.Utilities;
+using Domain.Core;
 #endregion
 
-public class RecommendationSystemDbContext : DbContext
+public class RecommendationSystemDbContext : DbContext, IApplicationDbContext
 {
     public RecommendationSystemDbContext(DbContextOptions<RecommendationSystemDbContext> options)
     : base(options)
     {
     }
 
-    public DbSet<Apartment> Apartaments { get; set; }
+    public DbSet<Apartment> Apartments { get; set; }
 
     public DbSet<Location> Locations { get; set; }
 
@@ -34,4 +41,38 @@ public class RecommendationSystemDbContext : DbContext
         // Applies configurations from RS.Infrastructure.Configurations via reflection.
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
+
+    #region IApplicationDbContext implementations
+
+    /// <inheritdoc />
+    public new DbSet<TEntity> Set<TEntity>()
+        where TEntity : Entity
+        => base.Set<TEntity>();
+
+    public Task<int> ExecuteSqlAsync(string sql, IEnumerable<SqlParameter> parameters, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<NullableValueWrapper<TEntity>> GetBydIdAsync<TEntity>(Guid id) where TEntity : Entity
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Insert<TEntity>(TEntity entity) where TEntity : Entity
+    {
+        throw new NotImplementedException();
+    }
+
+    public void InsertRange<TEntity>(IReadOnlyCollection<TEntity> entities) where TEntity : Entity
+    {
+        throw new NotImplementedException();
+    }
+
+    void IApplicationDbContext.Remove<TEntity>(TEntity entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    #endregion
 }

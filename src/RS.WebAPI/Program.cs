@@ -2,6 +2,7 @@ using Serilog;
 
 using RS.Infrastructure;
 using RS.Presentation;
+using RS.Application.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<RecommendationSystemDbContext>();
+builder.Services.AddDbContext<IApplicationDbContext,RecommendationSystemDbContext>();
 
 builder.Services.AddPresentation();
 
