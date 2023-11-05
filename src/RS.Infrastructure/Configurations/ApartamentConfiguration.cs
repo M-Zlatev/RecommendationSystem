@@ -6,15 +6,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Domain;
 using Domain.ValueObjects;
 
-public class ApartamentConfiguration : IEntityTypeConfiguration<Apartament>
+public class ApartamentConfiguration : IEntityTypeConfiguration<Apartment>
 {
-    public void Configure(EntityTypeBuilder<Apartament> apartament)
+    public void Configure(EntityTypeBuilder<Apartment> apartament)
     {
         apartament.HasKey(a => a.Id);
 
         apartament.Property(a => a.Id).HasConversion(
             apartamentId => apartamentId.Value,
-            value => new ApartamentId(value));
+            value => new ApartmentId(value));
 
         apartament
             .Property(a => a.ApartmentStatus)

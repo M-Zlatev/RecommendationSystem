@@ -16,7 +16,7 @@ public class RecommendationSystemDbContext : DbContext
     {
     }
 
-    public DbSet<Apartament> Apartaments { get; set; }
+    public DbSet<Apartment> Apartaments { get; set; }
 
     public DbSet<Location> Locations { get; set; }
 
