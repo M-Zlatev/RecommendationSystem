@@ -8,12 +8,12 @@ using Domain.ValueObjects;
 
 public class CreateApartmentCommandHandler : IRequestHandler<CreateApartmentCommand>
 {
-    private readonly IApartmentRepository _apartamentRepository;
+    private readonly IApartmentRepository _apartmentRepository;
     private readonly IUnitOfWork _unitOfWork;
 
     public CreateApartmentCommandHandler(IApartmentRepository apartamentRepository, IUnitOfWork unitOfWork)
     {
-        _apartamentRepository = apartamentRepository;
+        _apartmentRepository = apartamentRepository;
         _unitOfWork = unitOfWork;
     }
 
@@ -34,7 +34,7 @@ public class CreateApartmentCommandHandler : IRequestHandler<CreateApartmentComm
           request.PermissionForUse,
           request.Notes);
 
-        _apartamentRepository.Add(apartament);
+        _apartmentRepository.Add(apartament);
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);
     }
