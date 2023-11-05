@@ -4,9 +4,10 @@ using MediatR;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Mvc;
 
+using Application.Apartments.Get;
 using Application.Apartaments.Create;
-using Application.Apartments.Delete;
 using Application.Apartments.Update;
+using Application.Apartments.Delete;
 using Domain;
 using Domain.ValueObjects;
 using Extensions;
@@ -15,6 +16,18 @@ public class Apartments : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
+        app.MapGet("aprtments/{id:guid}", async (Guid id, ISender sender) =>
+        {
+            try
+            {
+                return Results.Ok(await sender.Send(new GetApartmentQuery(new ApartmentId(id))));
+            }
+            catch (ApartmentNotFoundException ex)
+            {
+                return Results.NotFound(ex.Message);
+            }
+        });
+
         app.MapPost("apartments", async (CreateApartmentCommand command, ISender sender) =>
         {
             await sender.Send(command);
