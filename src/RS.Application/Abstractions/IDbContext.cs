@@ -3,8 +3,8 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
-using Domain.Core;
-using Domain.Core.Utilities;
+using Domain.Seedwork;
+using Domain.Seedwork.Utilities;
 
 /// <summary>
 /// Represents the application database context interface.
@@ -16,7 +16,7 @@ public interface IDbContext
     /// </summary>
     /// <typeparam name="TEntity">The entity type.</typeparam>
     /// <returns>The database set for the specified entity type.</returns>
-    DbSet<TEntity> Set<TEntity>()
+    DbSet<TEntity> DbSet<TEntity>()
         where TEntity : Entity;
 
     /// <summary>

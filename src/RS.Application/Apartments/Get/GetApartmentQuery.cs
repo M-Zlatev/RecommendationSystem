@@ -9,7 +9,7 @@ using Domain.ValueObjects;
 public record GetApartmentQuery(ApartmentId ApartmentId) : IRequest<ApartmentResponse>;
 
 public record ApartmentResponse(
-    Guid id,
+    Guid Id,
     ApartmentStatus ApartmentStatus,
     PropertyType PropertyType,
     string PriceCurrency,

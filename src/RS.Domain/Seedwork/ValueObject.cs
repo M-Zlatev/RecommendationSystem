@@ -1,4 +1,4 @@
-﻿namespace RS.Domain.Core;
+﻿namespace RS.Domain.Seedwork;
 
 /// <summary>
 /// Represents the base class all value objects derive from.

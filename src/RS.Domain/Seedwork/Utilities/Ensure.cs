@@ -1,4 +1,4 @@
-﻿namespace RS.Domain.Core.Utilities;
+﻿namespace RS.Domain.Seedwork.Utilities;
 
 /// <summary>
 /// Contains assertions for the most common application checks.

@@ -1,4 +1,4 @@
-﻿namespace RS.Domain.Core;
+﻿namespace RS.Domain.Seedwork;
 
 using Utilities;
 

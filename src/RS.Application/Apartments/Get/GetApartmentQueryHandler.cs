@@ -2,6 +2,7 @@
 
 using System.Linq;
 
+using Microsoft.EntityFrameworkCore;
 using MediatR;
 
 using Data;
@@ -18,8 +19,8 @@ public sealed class GetApartmentQueryHandler : IRequestHandler<GetApartmentQuery
 
     public async Task<ApartmentResponse> Handle(GetApartmentQuery request, CancellationToken cancellationToken)
     {
-        var apartment = _context
-            .Apartments
+        var apartment = await _context
+            .DbSet<Apartment>()
             .Where(a => a.Id == request.ApartmentId)
             .Select(a => new ApartmentResponse(
                 a.Id.Value,
@@ -37,7 +38,7 @@ public sealed class GetApartmentQueryHandler : IRequestHandler<GetApartmentQuery
                 a.BrokerCommission,
                 a.PermissionForUse,
                 a.Notes))
-            .FirstOrDefault();
+            .FirstOrDefaultAsync(cancellationToken);
 
         if(apartment is null)
         {

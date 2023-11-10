@@ -1,4 +1,6 @@
-﻿namespace RS.Domain.Core;
+﻿namespace RS.Domain.Seedwork;
+
+using Events;
 
 /// <summary>
 /// Represents the aggregate root.

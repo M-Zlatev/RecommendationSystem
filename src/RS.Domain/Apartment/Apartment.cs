@@ -1,7 +1,7 @@
 ﻿namespace RS.Domain;
 
-using Core;
 using Enums;
+using Seedwork;
 using ValueObjects;
 
 public class Apartment : Entity

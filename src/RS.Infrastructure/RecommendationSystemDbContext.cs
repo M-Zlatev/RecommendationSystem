@@ -8,15 +8,16 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Data.SqlClient;
 
 using Application.Data;
 using Domain;
-using Domain.Core.Utilities;
-using Domain.Core;
+using Domain.Seedwork;
+using Domain.Seedwork.Utilities;
 #endregion
 
-public class RecommendationSystemDbContext : DbContext, IDbContext
+public class RecommendationSystemDbContext : DbContext, IDbContext, IUnitOfWork
 {
     public RecommendationSystemDbContext(DbContextOptions<RecommendationSystemDbContext> options)
     : base(options)
@@ -44,35 +45,35 @@ public class RecommendationSystemDbContext : DbContext, IDbContext
 
     #region IDbContext implementations
 
-    /// <inheritdoc />
-    public new DbSet<TEntity> Set<TEntity>()
+    public new DbSet<TEntity> DbSet<TEntity>()
         where TEntity : Entity
         => base.Set<TEntity>();
 
+    public async Task<Maybe<TEntity>> GetBydIdAsync<TEntity>(Guid id)
+        where TEntity : Entity
+        => id == Guid.Empty ?
+            Maybe<TEntity>.None :
+            Maybe<TEntity>.From(await DbSet<TEntity>().FirstOrDefaultAsync(e => e.Id == id));
+
+    public void Insert<TEntity>(TEntity entity)
+        where TEntity : Entity
+        => DbSet<TEntity>().Add(entity);
+
+    public void InsertRange<TEntity>(IReadOnlyCollection<TEntity> entities)
+        where TEntity : Entity
+        => DbSet<TEntity>().AddRange(entities);
+
+    public new void Remove<TEntity>(TEntity entity)
+        where TEntity : Entity
+        => DbSet<TEntity>().Remove(entity);
+
+
     public Task<int> ExecuteSqlAsync(string sql, IEnumerable<SqlParameter> parameters, CancellationToken cancellationToken = default)
-    {
-        throw new NotImplementedException();
-    }
+        => Database.ExecuteSqlRawAsync(sql, parameters, cancellationToken);
 
-    public Task<Maybe<TEntity>> GetBydIdAsync<TEntity>(Guid id) where TEntity : Entity
-    {
-        throw new NotImplementedException();
-    }
+    public Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+         => Database.BeginTransactionAsync(cancellationToken);
 
-    public void Insert<TEntity>(TEntity entity) where TEntity : Entity
-    {
-        throw new NotImplementedException();
-    }
-
-    public void InsertRange<TEntity>(IReadOnlyCollection<TEntity> entities) where TEntity : Entity
-    {
-        throw new NotImplementedException();
-    }
-
-    void IDbContext.Remove<TEntity>(TEntity entity)
-    {
-        throw new NotImplementedException();
-    }
 
     #endregion
 }

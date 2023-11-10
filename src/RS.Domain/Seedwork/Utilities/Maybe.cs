@@ -1,4 +1,4 @@
-﻿namespace RS.Domain.Core.Utilities;
+﻿namespace RS.Domain.Seedwork.Utilities;
 
     /// <summary>
     /// Represents a wrapper around a value that may or may not be null.
