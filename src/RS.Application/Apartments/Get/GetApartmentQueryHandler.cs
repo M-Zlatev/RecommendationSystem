@@ -9,9 +9,9 @@ using Domain;
 
 public sealed class GetApartmentQueryHandler : IRequestHandler<GetApartmentQuery, ApartmentResponse>
 {
-    private readonly IApplicationDbContext _context;
+    private readonly IDbContext _context;
 
-    public GetApartmentQueryHandler(IApplicationDbContext context)
+    public GetApartmentQueryHandler(IDbContext context)
     {
         _context = context;
     }

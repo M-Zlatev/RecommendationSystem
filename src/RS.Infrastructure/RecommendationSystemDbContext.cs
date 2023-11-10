@@ -16,7 +16,7 @@ using Domain.Core.Utilities;
 using Domain.Core;
 #endregion
 
-public class RecommendationSystemDbContext : DbContext, IApplicationDbContext
+public class RecommendationSystemDbContext : DbContext, IDbContext
 {
     public RecommendationSystemDbContext(DbContextOptions<RecommendationSystemDbContext> options)
     : base(options)
@@ -42,7 +42,7 @@ public class RecommendationSystemDbContext : DbContext, IApplicationDbContext
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 
-    #region IApplicationDbContext implementations
+    #region IDbContext implementations
 
     /// <inheritdoc />
     public new DbSet<TEntity> Set<TEntity>()
@@ -54,7 +54,7 @@ public class RecommendationSystemDbContext : DbContext, IApplicationDbContext
         throw new NotImplementedException();
     }
 
-    public Task<NullableValueWrapper<TEntity>> GetBydIdAsync<TEntity>(Guid id) where TEntity : Entity
+    public Task<Maybe<TEntity>> GetBydIdAsync<TEntity>(Guid id) where TEntity : Entity
     {
         throw new NotImplementedException();
     }
@@ -69,7 +69,7 @@ public class RecommendationSystemDbContext : DbContext, IApplicationDbContext
         throw new NotImplementedException();
     }
 
-    void IApplicationDbContext.Remove<TEntity>(TEntity entity)
+    void IDbContext.Remove<TEntity>(TEntity entity)
     {
         throw new NotImplementedException();
     }

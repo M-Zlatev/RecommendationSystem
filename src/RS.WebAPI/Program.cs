@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<IApplicationDbContext,RecommendationSystemDbContext>();
+builder.Services.AddDbContext<IDbContext,RecommendationSystemDbContext>();
 
 builder.Services.AddPresentation();
 

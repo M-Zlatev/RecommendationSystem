@@ -4,15 +4,15 @@
     /// Represents a wrapper around a value that may or may not be null.
     /// </summary>
     /// <typeparam name="T">The value type.</typeparam>
-    public sealed class NullableValueWrapper<T> : IEquatable<NullableValueWrapper<T>>
+    public sealed class Maybe<T> : IEquatable<Maybe<T>>
     {
         private readonly T _value;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="NullableValueWrapper{T}"/> class.
+    /// Initializes a new instance of the <see cref="Maybe{T}"/> class.
     /// </summary>
     /// <param name="value">The value.</param>
-    private NullableValueWrapper(T value) => _value = value;
+    private Maybe(T value) => _value = value;
 
         /// <summary>
         /// Gets a value indicating whether or not the value exists.
@@ -34,21 +34,21 @@
         /// <summary>
         /// Gets the default empty instance.
         /// </summary>
-        public static NullableValueWrapper<T> None => new NullableValueWrapper<T>(default);
+        public static Maybe<T> None => new Maybe<T>(default);
 
     /// <summary>
-    /// Creates a new <see cref="NullableValueWrapper{T}"/> instance based on the specified value.
+    /// Creates a new <see cref="Maybe{T}"/> instance based on the specified value.
     /// </summary>
     /// <param name="value">The value.</param>
-    /// <returns>The new <see cref="NullableValueWrapper{T}"/> instance.</returns>
-    public static NullableValueWrapper<T> From(T value) => new NullableValueWrapper<T>(value);
+    /// <returns>The new <see cref="Maybe{T}"/> instance.</returns>
+    public static Maybe<T> From(T value) => new Maybe<T>(value);
 
-        public static implicit operator NullableValueWrapper<T>(T value) => From(value);
+        public static implicit operator Maybe<T>(T value) => From(value);
 
-        public static implicit operator T(NullableValueWrapper<T> maybe) => maybe.Value;
+        public static implicit operator T(Maybe<T> maybe) => maybe.Value;
 
         /// <inheritdoc />
-        public bool Equals(NullableValueWrapper<T> other)
+        public bool Equals(Maybe<T> other)
         {
             if (other is null)
             {
@@ -73,8 +73,8 @@
             obj switch
             {
                 null => false,
-                T value => Equals(new NullableValueWrapper<T>(value)),
-                NullableValueWrapper<T> maybe => Equals(maybe),
+                T value => Equals(new Maybe<T>(value)),
+                Maybe<T> maybe => Equals(maybe),
                 _ => false
             };
 
