@@ -4,7 +4,7 @@ using Enums;
 using Seedwork;
 using ValueObjects;
 
-public class Apartment : Entity
+public class Apartment : AggregateRoot
 {
     public Apartment(
          ApartmentId id,
