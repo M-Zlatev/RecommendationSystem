@@ -18,7 +18,7 @@
             return value.Value;
         }
 
-        protected override IEnumerable<object> GetAtomicValues()
+        protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;
         }

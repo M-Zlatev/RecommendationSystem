@@ -1,20 +1,25 @@
 ﻿namespace RS.Domain.Seedwork;
 
+using Events;
 using Utilities;
 
 /// <summary>
 /// Represents the base class that all entities derive from.
 /// </summary>
-public abstract class Entity : IEquatable<Entity>
+public abstract class Entity<TId> : IEquatable<Entity<TId>>, IHasDomainEvents
+    where TId : ValueObject
 {
+
+    private readonly List<IDomainEvent> _domainEvents = new();
+
     /// <summary>
     /// Initializes a new instance of the <see cref="Entity"/> class.
     /// </summary>
     /// <param name="id">The entity identifier.</param>
-    protected Entity(Guid id)
-        : this()
+    protected Entity(TId id)
+        :this()
     {
-        Ensure.NotEmpty(id, "The identifier is required.", nameof(id));
+        Ensure.NotNull(id, "The identifier is required.", nameof(id));
 
         Id = id;
     }
@@ -32,37 +37,41 @@ public abstract class Entity : IEquatable<Entity>
     /// <summary>
     /// Gets or sets the entity identifier.
     /// </summary>
-    public Guid Id { get; private set; }
+    public TId Id { get; protected set; }
 
-    public static bool operator ==(Entity a, Entity b)
+    /// <summary>
+    /// Gets the domain events. This collection is readonly.
+    /// </summary>
+    public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+
+    public static bool operator ==(Entity<TId> left, Entity<TId> right)
     {
-        if (a is null && b is null)
+        if (left is null && right is null)
         {
             return true;
         }
 
-        if (a is null || b is null)
+        if (left is null || right is null)
         {
             return false;
         }
 
-        return a.Equals(b);
+        return Equals(left, right);
     }
 
-    public static bool operator !=(Entity a, Entity b) => !(a == b);
+    public static bool operator !=(Entity<TId> left, Entity<TId> right) => !(left == right);
 
-    /// <inheritdoc />
-    public bool Equals(Entity other)
+
+    public bool Equals(Entity<TId>? other)
     {
         if (other is null)
         {
             return false;
         }
 
-        return ReferenceEquals(this, other) || Id == other.Id;
+        return Equals((object?)other);
     }
 
-    /// <inheritdoc />
     public override bool Equals(object obj)
     {
         if (obj is null)
@@ -80,12 +89,7 @@ public abstract class Entity : IEquatable<Entity>
             return false;
         }
 
-        if (!(obj is Entity other))
-        {
-            return false;
-        }
-
-        if (Id == Guid.Empty || other.Id == Guid.Empty)
+        if (obj is not Entity<TId> other)
         {
             return false;
         }
@@ -93,6 +97,16 @@ public abstract class Entity : IEquatable<Entity>
         return Id == other.Id;
     }
 
-    /// <inheritdoc />
-    public override int GetHashCode() => Id.GetHashCode() * 41;
+    public override int GetHashCode() => Id.GetHashCode();
+
+    /// <summary>
+    /// Adds the specified <see cref="IDomainEvent"/> to the <see cref="Entity"/>.
+    /// </summary>
+    /// <param name="domainEvent">The domain event.</param>
+    protected void AddDomainEvent(IDomainEvent domainEvent) => _domainEvents.Add(domainEvent);
+
+    /// <summary>
+    /// Clears all the domain events from the <see cref="Entity"/>.
+    /// </summary>
+    public void ClearDomainEvents() => _domainEvents.Clear();
 }

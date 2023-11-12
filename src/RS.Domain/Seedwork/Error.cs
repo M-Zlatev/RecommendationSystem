@@ -29,7 +29,7 @@ public sealed class Error : ValueObject
     public static implicit operator string(Error error) => error?.Code ?? string.Empty;
 
     /// <inheritdoc />
-    protected override IEnumerable<object> GetAtomicValues()
+    protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Code;
         yield return Message;
