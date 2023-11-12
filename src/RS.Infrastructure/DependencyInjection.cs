@@ -1,16 +1,15 @@
 ﻿namespace RS.Infrastructure;
 
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-using RS.Application.Data;
+using Application.Common.Interfaces;
+using Persistence;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
-        services.AddScoped<IDbContext>(serviceProvider => serviceProvider.GetRequiredService<RecommendationSystemDbContext>());
+        services.AddScoped<IApplicationDbContext>(serviceProvider => serviceProvider.GetRequiredService<RecommendationSystemDbContext>());
         services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<RecommendationSystemDbContext>());
 
         return services;

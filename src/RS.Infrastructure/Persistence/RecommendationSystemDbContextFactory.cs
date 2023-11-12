@@ -1,4 +1,4 @@
-﻿namespace RS.Infrastructure;
+﻿namespace RS.Infrastructure.Persistence;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;

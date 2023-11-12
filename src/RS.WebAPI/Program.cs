@@ -1,8 +1,9 @@
 using Serilog;
 
+using RS.Application;
+using RS.Application.Common.Interfaces;
 using RS.Infrastructure;
-using RS.Presentation;
-using RS.Application.Data;
+using RS.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +11,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<IDbContext,RecommendationSystemDbContext>();
+builder.Services.AddDbContext<IApplicationDbContext,RecommendationSystemDbContext>();
 
-builder.Services.AddPresentation();
+builder.Services
+    .AddApplication()
+    .AddInfrastructure();
 
 builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 

@@ -5,14 +5,14 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
 
-using Data;
 using Domain;
+using Common.Interfaces;
 
 public sealed class GetApartmentQueryHandler : IRequestHandler<GetApartmentQuery, ApartmentResponse>
 {
-    private readonly IDbContext _context;
+    private readonly IApplicationDbContext _context;
 
-    public GetApartmentQueryHandler(IDbContext context)
+    public GetApartmentQueryHandler(IApplicationDbContext context)
     {
         _context = context;
     }

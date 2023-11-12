@@ -2,9 +2,9 @@
 
 using MediatR;
 
-using Application.Data;
 using Domain;
 using Domain.ValueObjects;
+using RS.Application.Common.Interfaces;
 
 public class CreateApartmentCommandHandler : IRequestHandler<CreateApartmentCommand>
 {

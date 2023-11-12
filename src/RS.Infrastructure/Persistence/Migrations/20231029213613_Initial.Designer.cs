@@ -2,17 +2,20 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RS.Infrastructure;
+using RS.Infrastructure.Persistence;
 
 #nullable disable
 
 namespace RS.Infrastructure.Migrations
 {
     [DbContext(typeof(RecommendationSystemDbContext))]
-    partial class RecommendationSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231029213613_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

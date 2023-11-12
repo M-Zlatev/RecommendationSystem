@@ -1,4 +1,4 @@
-﻿namespace RS.Application.Data;
+﻿namespace RS.Application.Common.Interfaces;
 
 using Microsoft.EntityFrameworkCore.Storage;
 

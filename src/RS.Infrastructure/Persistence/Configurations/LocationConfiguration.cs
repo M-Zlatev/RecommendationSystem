@@ -1,4 +1,4 @@
-﻿namespace RS.Infrastructure.Configurations;
+﻿namespace RS.Infrastructure.Persistence.Configurations;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

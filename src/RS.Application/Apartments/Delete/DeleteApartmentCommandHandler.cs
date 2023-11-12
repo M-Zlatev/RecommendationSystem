@@ -2,7 +2,7 @@
 
 using MediatR;
 
-using Application.Data;
+using Common.Interfaces;
 using Domain;
 
 public class DeleteApartmentCommandHandler : IRequestHandler<DeleteApartmentCommand>

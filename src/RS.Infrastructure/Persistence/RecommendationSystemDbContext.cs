@@ -1,4 +1,4 @@
-﻿namespace RS.Infrastructure;
+﻿namespace RS.Infrastructure.Persistence;
 
 #region Usings
 using System;
@@ -11,13 +11,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Data.SqlClient;
 
-using Application.Data;
 using Domain;
 using Domain.Seedwork;
 using Domain.Seedwork.Utilities;
+using Application.Common.Interfaces;
 #endregion
 
-public class RecommendationSystemDbContext : DbContext, IDbContext, IUnitOfWork
+public class RecommendationSystemDbContext : DbContext, IApplicationDbContext, IUnitOfWork
 {
     public RecommendationSystemDbContext(DbContextOptions<RecommendationSystemDbContext> options)
     : base(options)

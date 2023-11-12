@@ -1,4 +1,4 @@
-﻿namespace RS.Application.Data;
+﻿namespace RS.Application.Common.Interfaces;
 
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +9,7 @@ using Domain.Seedwork.Utilities;
 /// <summary>
 /// Represents the application database context interface.
 /// </summary>
-public interface IDbContext
+public interface IApplicationDbContext
 {
     /// <summary>
     /// Gets the database set for the specified entity type.

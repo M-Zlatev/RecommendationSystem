@@ -22,11 +22,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RS.Application\RS.Application.csproj" />
-    <ProjectReference Include="..\RS.Domain\RS.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <Folder Include="Persistence\Migrations\" />
   </ItemGroup>
 
 </Project>
