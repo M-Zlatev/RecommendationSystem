@@ -1,4 +1,4 @@
-﻿namespace RS.Domain.Enums;
+﻿namespace RS.Domain.Entities.Apartment.Enums;
 
 public enum ApartmentStatus
 {

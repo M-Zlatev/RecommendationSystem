@@ -3,18 +3,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-using Domain;
-using Domain.ValueObjects;
+using Domain.Entities.Apartment;
 
 public class LocationConfiguration : IEntityTypeConfiguration<Location>
 {
     public void Configure(EntityTypeBuilder<Location> location)
     {
         location.HasKey(l => l.Id);
-
-        location.Property(l => l.Id).HasConversion(
-            locationId => locationId.Value,
-            value => new LocationId(value));
 
         location
             .Property(l => l.StreetAddress)

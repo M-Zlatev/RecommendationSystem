@@ -3,18 +3,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-using Domain;
-using Domain.ValueObjects;
+using Domain.Entities.Apartment;
 
 public class FloorConfiguration : IEntityTypeConfiguration<Floor>
 {
     public void Configure(EntityTypeBuilder<Floor> floor)
     {
         floor.HasKey(f => f.Id);
-
-        floor.Property(c => c.Id).HasConversion(
-            floorId => floorId.Value,
-            value => new FloorId(value));
 
         floor
             .Property(f => f.ApartmentFloor)

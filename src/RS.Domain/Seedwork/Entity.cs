@@ -14,7 +14,7 @@ public abstract class Entity : IEquatable<Entity>, IHasDomainEvents
     /// Initializes a new instance of the <see cref="Entity"/> class.
     /// </summary>
     /// <param name="id">The entity identifier.</param>
-    protected Entity(Guid id)
+    protected Entity(int id)
         :this()
     {
         Id = id;
@@ -33,7 +33,7 @@ public abstract class Entity : IEquatable<Entity>, IHasDomainEvents
     /// <summary>
     /// Gets or sets the entity identifier.
     /// </summary>
-    public Guid Id { get; protected set; }
+    public int Id { get; protected set; }
 
     /// <summary>
     /// Gets the domain events. This collection is readonly.
