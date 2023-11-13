@@ -1,13 +1,11 @@
 ﻿namespace RS.Domain.Seedwork;
 
 using Events;
-using Utilities;
 
 /// <summary>
 /// Represents the base class that all entities derive from.
 /// </summary>
-public abstract class Entity<TId> : IEquatable<Entity<TId>>, IHasDomainEvents
-    where TId : ValueObject
+public abstract class Entity : IEquatable<Entity>, IHasDomainEvents
 {
 
     private readonly List<IDomainEvent> _domainEvents = new();
@@ -16,11 +14,9 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>, IHasDomainEvents
     /// Initializes a new instance of the <see cref="Entity"/> class.
     /// </summary>
     /// <param name="id">The entity identifier.</param>
-    protected Entity(TId id)
+    protected Entity(Guid id)
         :this()
     {
-        Ensure.NotNull(id, "The identifier is required.", nameof(id));
-
         Id = id;
     }
 
@@ -37,14 +33,14 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>, IHasDomainEvents
     /// <summary>
     /// Gets or sets the entity identifier.
     /// </summary>
-    public TId Id { get; protected set; }
+    public Guid Id { get; protected set; }
 
     /// <summary>
     /// Gets the domain events. This collection is readonly.
     /// </summary>
     public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
-    public static bool operator ==(Entity<TId> left, Entity<TId> right)
+    public static bool operator ==(Entity left, Entity right)
     {
         if (left is null && right is null)
         {
@@ -59,10 +55,10 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>, IHasDomainEvents
         return Equals(left, right);
     }
 
-    public static bool operator !=(Entity<TId> left, Entity<TId> right) => !(left == right);
+    public static bool operator !=(Entity left, Entity right) => !(left == right);
 
 
-    public bool Equals(Entity<TId>? other)
+    public bool Equals(Entity? other)
     {
         if (other is null)
         {
@@ -89,7 +85,7 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>, IHasDomainEvents
             return false;
         }
 
-        if (obj is not Entity<TId> other)
+        if (obj is not Entity other)
         {
             return false;
         }

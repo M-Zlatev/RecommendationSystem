@@ -1,18 +1,15 @@
 ﻿namespace RS.Domain.Seedwork;
 
-using Events;
-
 /// <summary>
 /// Represents the aggregate root.
 /// </summary>
-public abstract class AggregateRoot<TId> : Entity<TId> 
-    where TId : ValueObject
+public abstract class AggregateRoot : Entity 
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateRoot"/> class.
     /// </summary>
     /// <param name="id">The aggregate root identifier.</param>
-    protected AggregateRoot(TId id)
+    protected AggregateRoot(Guid id)
         : base(id)
     {
     }
